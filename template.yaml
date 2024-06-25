@@ -9,7 +9,7 @@ metadata:
     - api
     - scaffold
 spec:
-  owner: team-name
+  owner: guests
   type: service
   parameters:
     - title: API Configuration

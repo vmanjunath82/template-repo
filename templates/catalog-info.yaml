@@ -10,5 +10,5 @@ metadata:
 spec:
   type: template
   lifecycle: experimental
-  owner: team-name
+  owner: guests
   path: templates/component
