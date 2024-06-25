@@ -1,0 +1,45 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: local-api-template
+  title: Local API Interaction Template
+  description: Scaffold a project to interact with a local API.
+  tags:
+    - local-api
+    - scaffold
+spec:
+  owner: team-name
+  type: service
+  parameters:
+    - title: API Configuration
+      properties:
+        apiUrl:
+          title: API URL
+          description: The URL of the local API
+          type: string
+        componentName:
+          title: Component Name
+          description: The name of the new component
+          type: string
+      required:
+        - apiUrl
+        - componentName
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: 'https://github.com/your-org/your-template-repo/archive/main.zip'
+        targetPath: '.'
+        values:
+          apiUrl: '{{parameters.apiUrl}}'
+          componentName: '{{parameters.componentName}}'
+
+    - id: execute
+      name: Execute Template
+      action: execute:shell
+      input:
+        shell: |
+          npx @backstage/create-app --app-name {{parameters.componentName}}
+          cd {{parameters.componentName}}
+          echo "REACT_APP_API_URL={{parameters.apiUrl}}" >> .env

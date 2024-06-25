@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: local-api-template
+  description: A template for scaffolding a project that interacts with a local API.
+  tags:
+    - template
+    - local-api
+spec:
+  type: template
+  lifecycle: experimental
+  owner: team-name
+  path: templates/component
