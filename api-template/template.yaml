@@ -29,7 +29,7 @@ spec:
       name: Fetch Template
       action: fetch:template
       input:
-        url: 'https://github.com/your-org/your-template-repo/archive/main.zip'
+        url: 'https://github.com/vmanjunath82/template-repo/archive/refs/heads/main.zip'
         targetPath: '.'
         values:
           apiUrl: '{{parameters.apiUrl}}'
