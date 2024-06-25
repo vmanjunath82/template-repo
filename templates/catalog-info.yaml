@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: angular-springboot-api-template
+  description: A template for scaffolding an Angular project that interacts with a Spring Boot API.
+  tags:
+    - template
+    - angular
+    - api
+spec:
+  type: template
+  lifecycle: experimental
+  owner: team-name
+  path: templates/component

@@ -1,0 +1,9 @@
+<div>
+    <h4>Local API Interaction</h4>
+    <input [(ngModel)]="input" placeholder="Input" />
+    <button (click)="onSubmit()">Submit</button>
+    <div *ngIf="response">
+        <h6>Response:</h6>
+        <pre>{{ response | json }}</pre>
+    </div>
+</div>

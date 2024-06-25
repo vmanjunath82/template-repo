@@ -1,0 +1,46 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: angular-springboot-api-template
+  title: Angular Spring Boot API Interaction Template
+  description: Scaffold an Angular project to interact with a Spring Boot API.
+  tags:
+    - angular
+    - api
+    - scaffold
+spec:
+  owner: team-name
+  type: service
+  parameters:
+    - title: API Configuration
+      properties:
+        apiUrl:
+          title: API URL
+          description: The URL of the Spring Boot API
+          type: string
+        componentName:
+          title: Component Name
+          description: The name of the new component
+          type: string
+      required:
+        - apiUrl
+        - componentName
+  steps:
+    - id: fetch
+      name: Fetch Template
+      action: fetch:template
+      input:
+        url: 'https://github.com/your-org/your-template-repo/archive/main.zip'
+        targetPath: '.'
+        values:
+          apiUrl: '{{parameters.apiUrl}}'
+          componentName: '{{parameters.componentName}}'
+    - id: execute
+      name: Execute Template
+      action: execute:shell
+      input:
+        shell: |
+          npx -p @angular/cli ng new {{parameters.componentName}} --routing --style css
+          cd {{parameters.componentName}}
+          ng generate component {{parameters.componentName}}
+          echo "export const environment = { apiUrl: '{{parameters.apiUrl}}' };" > src/environments/environment.ts

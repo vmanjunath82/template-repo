@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+@Component({
+selector: 'app-local-api-component',
+templateUrl: './local-api-component.component.html',
+styleUrls: ['./local-api-component.component.css']
+})
+export class LocalApiComponent implements OnInit {
+input: string = '';
+response: any;
+
+constructor(private http: HttpClient) { }
+
+ngOnInit(): void { }
+
+onSubmit(): void {
+this.http.post(environment.apiUrl + '/getData', { input: this.input }).subscribe(
+data => {
+this.response = data;
+},
+error => {
+console.error('Error fetching API:', error);
+this.response = null;
+}
+);
+}
+}
